@@ -41,6 +41,24 @@ const insertIntoSql = function (table, data) {
     return sql;
 };
 
+ const updateSql = function (table, mainKey, mainValue, data) {
+    let sql = 'update ' + table + ' set ';
+    for (let i in data) {
+        if((typeof data[i]).indexOf('string') === 0){
+            sql += i + ' = ' + '"' + data[i] + '"' + ','; 
+        }else {
+            sql += i + ' = ' + data[i]  + ',';
+        }
+    }
+    sql = sql.substring(0,sql.length - 1);
+    if((typeof mainValue).indexOf('string') === 0){
+        sql += ' where ' + mainKey + '=' + '"' +  mainValue + '"' + ';';
+    }else {
+        sql += ' where ' + mainKey + '=' +  mainValue + ';';
+    }
+    return sql;
+ }
+
 exports.connect = function (config){
     client = mysql.createPool(config);
 };
@@ -52,8 +70,9 @@ exports.checkPlayer = function (uniqueId, cb) {
         if(err){
             console.log('err ==> ' ,err);
         }
+        let sqlData = JSON.stringify(data);
         console.log("checkPlayer data ==> " ,JSON.stringify(data));
-        cb(err,data);
+        cb(err,JSON.parse(sqlData));
     })
 };
 
@@ -67,4 +86,15 @@ exports.insertPlayerInfo = function (data) {
         }
     })
     console.log("insert sql ==> " ,sql);
+};
+
+exports.updatePlayerInfo = function (mainKey,mainValue,data) {
+    let sql = updateSql("t_playerinfo",mainKey,mainValue,data);
+    query(sql,function (err, cb) {
+        if(err){
+            console.log("updatePlayerInfo err ==> " ,err);
+        }else {
+            console.log("updatePlayerInfo success ==> ",JSON.stringify(data));
+        }
+    })
 }
