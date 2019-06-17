@@ -6,7 +6,7 @@ const Player = function (socket , data) {
     let _avatarUrl = data.avatarUrl;
     let _houseCardCount = data.houseCardCount;
     let _callBackIndex = data.callBackIndex;
-    _socket.emit('notify',{msg : 'login', callBackIndex : _callBackIndex, data : "welcome"});
+    _socket.emit('notify',{msg : 'login', callBackIndex : _callBackIndex, data : data});
     return that;
 };
 

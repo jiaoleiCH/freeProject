@@ -17,6 +17,10 @@ let PlayerData = function () {
 
     that.loginSuccess = function (data) {
         console.log("loginSuccess data ==> " , data);
+        that.uid = data.uid;
+        that.nickName = data.nickName;
+        that.avatarUrl = data.avatarUrl;
+        that.houseCardCount = data.houseCardCount;
     }
 
     return that;
