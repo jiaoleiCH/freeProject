@@ -24,7 +24,7 @@ cc.Class({
                         }else {
                             console.log("login data ==> " ,JSON.stringify(data));
                             global.utilsData.playerData.loginSuccess(data);
-                            cc.director.loadScene('')
+                            cc.director.loadScene('mainScene');
                         }
                     }
                 )

@@ -21,6 +21,14 @@ cc.Class({
             case 'wxLogin':
                 
                 break;
+            case 'back':
+                break;
+            case 'set':
+                break;
+            case 'fight':
+                break;
+            case 'wanfa':
+                break;
         
             default:
                 break;
