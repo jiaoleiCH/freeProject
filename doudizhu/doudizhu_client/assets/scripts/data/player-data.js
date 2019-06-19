@@ -15,12 +15,12 @@ let PlayerData = function () {
         that.avatarUrl = data.avatarUrl;
     };
 
-    that.loginSuccess = function (data) {
-        console.log("loginSuccess data ==> " , data);
-        that.uid = data.uid;
-        that.nickName = data.nickName;
-        that.avatarUrl = data.avatarUrl;
-        that.houseCardCount = data.houseCardCount;
+    that.loginSuccess = function (res) {
+        console.log("loginSuccess data ==> " , res);
+        that.uid = res.data.uid;
+        that.nickName = res.data.nickName;
+        that.avatarUrl = res.data.avatarUrl;
+        that.houseCardCount = res.data.houseCardCount;
     }
 
     return that;
