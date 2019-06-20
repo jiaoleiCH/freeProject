@@ -11,6 +11,7 @@ cc.Class({
 
         //prefbs
         joinRoomPrefas : cc.Prefab,
+        createRoomPrefas : cc.Prefab,
     },
 
     onLoad () {
@@ -57,7 +58,7 @@ cc.Class({
             case 'addCard':
                 break;
             case 'createRoom':
-
+                this.createNodeByPrefab(customData,this.createRoomPrefas);
                 break;
             case 'joinRoom':
                 this.createNodeByPrefab(customData,this.joinRoomPrefas);

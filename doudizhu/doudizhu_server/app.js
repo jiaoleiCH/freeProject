@@ -3,6 +3,7 @@ const sqlDB = require('./utillity/db');
 const config = require('./config.json');
 const app = socket('4000');
 const playerController = require('./game/player');
+const room = require('./game/room');
 sqlDB.connect(config.mysqlConfig);
 
 app.on("connection" , function (socket) {

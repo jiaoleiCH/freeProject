@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6390624999999986,
-      "y": 0.6390624999999986,
+      "x": 0.6654513888888889,
+      "y": 0.6654513888888889,
       "z": 1
     },
     "_quat": {
@@ -2701,7 +2701,7 @@
     "component": "",
     "_componentId": "fae73wPSSBNyZVESU8kj9R1",
     "handler": "btnClickEvent",
-    "customEventData": "createroom"
+    "customEventData": "createRoom"
   },
   {
     "__type__": "cc.Node",
@@ -2916,6 +2916,9 @@
     },
     "joinRoomPrefas": {
       "__uuid__": "a857eb87-98ee-4558-a2c1-76a4a29406a5"
+    },
+    "createRoomPrefas": {
+      "__uuid__": "15dc4d53-681a-4114-a996-7c818478059c"
     },
     "_id": "d9X3qUVeBFgofQNjZUm/cT"
   }

@@ -7,9 +7,9 @@ cc.Class({
     },
 
     onLoad () {
-        global.nodeCache.Preload((err) => {
-            console.log("preload prefab err => " ,err);
-        })
+        // global.nodeCache.Preload((err) => {
+        //     console.log("preload prefab err => " ,err);
+        // })
         //初始化socket
         global.socket.init();
     },
