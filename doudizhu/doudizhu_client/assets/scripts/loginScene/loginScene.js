@@ -11,7 +11,16 @@ cc.Class({
         //     console.log("preload prefab err => " ,err);
         // })
         //初始化socket
-        global.socket.init();
+
+        let gameConfig = defines.gameConfig;
+        let resList = [];
+        for (let i in gameConfig) {
+            resList.push(gameConfig[i]);
+        }
+        global.utilsData.resourcesManager.loadList(resList, () => {
+            console.log('resources = ' + JSON.stringify(global.utilsData.resourcesManager.resources));
+            global.socket.init();
+        })
     },
 
     buttonClickEvent (event , customData) {

@@ -1770,7 +1770,7 @@
     "component": "",
     "_componentId": "00a541WkkJIIq0BJVja7dVY",
     "handler": "clickBtnEvent",
-    "customEventData": "1_0"
+    "customEventData": "turn_count_1"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2345,7 +2345,7 @@
     "component": "",
     "_componentId": "00a541WkkJIIq0BJVja7dVY",
     "handler": "clickBtnEvent",
-    "customEventData": "1_1"
+    "customEventData": "turn_count_2"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -3009,7 +3009,7 @@
     "component": "",
     "_componentId": "00a541WkkJIIq0BJVja7dVY",
     "handler": "clickBtnEvent",
-    "customEventData": "2_0"
+    "customEventData": "special_rule_1"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -3480,7 +3480,7 @@
     "component": "",
     "_componentId": "00a541WkkJIIq0BJVja7dVY",
     "handler": "clickBtnEvent",
-    "customEventData": "2_1"
+    "customEventData": "special_rule_2"
   },
   {
     "__type__": "cc.PrefabInfo",

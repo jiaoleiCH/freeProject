@@ -1,4 +1,5 @@
 const gameController = require('./game-controller');
+const defines = require('./../defines');
 const Player = function (socket , data) {
     let that = {};
     let _socket = socket;
@@ -7,9 +8,19 @@ const Player = function (socket , data) {
     let _avatarUrl = data.avatarUrl;
     let _houseCardCount = data.houseCardCount;
     // let _callBackIndex = data.callBackIndex;
+
+    let _room = undefined;
+
     const notify = function (msg, index, data) {
         _socket.emit('notify',{msg : msg, callBackIndex : index, data : data});    
     };
+
+    _socket.on('disconnect', function () {
+        console.log('玩家掉线');
+        if(_room){
+
+        }
+    })
 
     notify('login',data.callBackIndex, {
         uid : _uid,
@@ -36,14 +47,16 @@ const Player = function (socket , data) {
                 // notify(msg,callBackIndex,'create room success');
                 break;
             case 'join_room':
-                
                 gameController.joinRoom(data.roomId,that,function (err,res) {
-                    
+                    let roomInfo = {};
+                    console.log('join room data ' , res);
                     if(err){
                         console.log('sever joinRoom err==> ' ,err);
                     }else{
-                        notify('join_room',callBackIndex,{err : err , roomId : res});
+                        roomInfo = res.data;
+                        _room = res.room;
                     }
+                    notify('join_room',callBackIndex,{err : err , data : roomInfo});
                 })
                 break;
             default:

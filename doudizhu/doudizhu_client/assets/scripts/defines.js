@@ -1,3 +1,8 @@
 const defines = {};
 defines.serverUrl = "http://localhost:4000";
-export default defines;
+
+defines.gameConfig = {
+    createRoomConfig: '/config/create_room_config'
+}
+window.defines = defines;
+// export default defines;

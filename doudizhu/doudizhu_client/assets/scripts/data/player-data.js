@@ -21,6 +21,16 @@ let PlayerData = function () {
         that.nickName = res.data.nickName;
         that.avatarUrl = res.data.avatarUrl;
         that.houseCardCount = res.data.houseCardCount;
+    };
+
+    that.joinRoomSuccess = function (config, data) {
+        console.log('room config = ',JSON.stringify(config));
+        console.log('data = ', JSON.stringify(data));
+        console.log('config ' ,config.turn_count);
+        // that.roomID = data.data.roomID;
+
+        // let turnCountConfig
+
     }
 
     return that;
