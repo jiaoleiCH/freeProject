@@ -5,7 +5,7 @@ const EventListener = function (obj) {
         if(Register.hasOwnProperty(type)){
             Register[type].push(method);
         }else{
-            Register[typo] = [method];
+            Register[type] = [method];
         }
     };
     obj.fire = function (type) {

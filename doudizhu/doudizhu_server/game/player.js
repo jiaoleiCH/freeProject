@@ -10,6 +10,7 @@ const Player = function (socket , data) {
     // let _callBackIndex = data.callBackIndex;
 
     let _room = undefined;
+    let _seatIndex = 0;
 
     const notify = function (msg, index, data) {
         _socket.emit('notify',{msg : msg, callBackIndex : index, data : data});    
@@ -56,13 +57,55 @@ const Player = function (socket , data) {
                         roomInfo = res.data;
                         _room = res.room;
                     }
+                    console.log('roomInfo => ' ,roomInfo);
                     notify('join_room',callBackIndex,{err : err , data : roomInfo});
                 })
                 break;
             default:
                 break;
         }
-    })
+    });
+
+    that.sendSyncData = function (data, callBackIndex) {
+        console.log('data = ', JSON.stringify(data));
+        notify('syncData',callBackIndex,data);
+    };
+
+    const setDefineProperty = function (property, type, value) {
+        switch (type) {
+            case defines.get:
+                Object.defineProperty(that, property, {
+                    get : function () {
+                        return value;
+                    }
+                })
+                break;
+            case defines.set:
+                Object.defineProperty(that, property, {
+                    set : function (val) {
+                        value = val;
+                    }
+                })
+                break;
+            case defines.both:
+                Object.defineProperty(that, property, {
+                    get : function () {
+                        return value;
+                    },
+                    set : function (val) {
+                        value = val;
+                    }
+                });
+                break;
+            default:
+                break;
+        }
+    };
+
+    setDefineProperty('seatIndex',defines.both, _seatIndex);
+    setDefineProperty('nickName',defines.get, _nickName);
+    setDefineProperty('avatarUrl',defines.get, _avatarUrl);
+    setDefineProperty('uid',defines.get, _uid);
     
     return that;
 };

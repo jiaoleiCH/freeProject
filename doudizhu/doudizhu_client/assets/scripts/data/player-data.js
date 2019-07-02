@@ -26,10 +26,19 @@ let PlayerData = function () {
     that.joinRoomSuccess = function (config, data) {
         console.log('room config = ',JSON.stringify(config));
         console.log('data = ', JSON.stringify(data));
-        console.log('config ' ,config.turn_count);
-        // that.roomID = data.data.roomID;
+        console.log('config ' ,config.json.turn_count); 
+        let gameConfig = config.json;
+        let roomConfig = data.data.data;
+        that.roomID = roomConfig.roomId;
+        console.log('gameConfig => ' ,gameConfig);
+        console.log('roomConfig => ' ,roomConfig);
 
-        // let turnCountConfig
+        let turnCountConfig = gameConfig.turn_count[roomConfig.turnCount];
+        that.totalTurnCount = turnCountConfig.turn_count;
+        that.needHouseCardCount = turnCountConfig.need_house_card_count;
+        let specialRuleConfig = gameConfig.special_rule[roomConfig.specialRule];
+        that.normalBombRate = specialRuleConfig.normal_bomb;
+        that.kingBombRate = specialRuleConfig.king_bomb;
 
     }
 

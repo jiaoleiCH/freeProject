@@ -16,6 +16,7 @@ const ResourcesManager = function () {
     that.loadList = function (resList , cb) {
         let loadCount = 0;
         const loadCb = function (resPath,res) {
+            console.log("添加资源列表 => " ,res);
             that.resources[resPath] = res;
             loadCount ++;
 

@@ -48,7 +48,15 @@ const SocketController = function () {
     that.joinRoom = function (roomId,cb) {
         console.log('client joinRoom data ==> ' ,roomId);
         request('join_room', {roomId:roomId},cb);
-    }   
+    };
+
+    that.notifyGameSceneLoadEnd = function () {
+        notify('gameSceneLoadEnd' , {})
+    };
+
+    that.onSycnData = function (method) {
+        _event.on('syncData',method);
+    }
 
     
 
