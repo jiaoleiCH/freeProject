@@ -19,7 +19,7 @@ const Player = function (socket , data) {
     _socket.on('disconnect', function () {
         console.log('玩家掉线');
         if(_room){
-
+            _room.playerOffLine(that);
         }
     })
 
@@ -61,13 +61,18 @@ const Player = function (socket , data) {
                     notify('join_room',callBackIndex,{err : err , data : roomInfo});
                 })
                 break;
+            case 'gameSceneLoadEnd':
+                if(_room){
+                    _room.playerGameSceneLoadEnd(that, callBackIndex);
+                }
+                break;
             default:
                 break;
         }
     });
 
     that.sendSyncData = function (data, callBackIndex) {
-        console.log('data = ', JSON.stringify(data));
+        console.log('data = ', callBackIndex,JSON.stringify(data));
         notify('syncData',callBackIndex,data);
     };
 

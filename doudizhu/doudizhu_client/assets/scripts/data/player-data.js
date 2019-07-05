@@ -15,12 +15,12 @@ let PlayerData = function () {
         that.avatarUrl = data.avatarUrl;
     };
 
-    that.loginSuccess = function (res) {
-        console.log("loginSuccess data ==> " , res);
-        that.uid = res.data.uid;
-        that.nickName = res.data.nickName;
-        that.avatarUrl = res.data.avatarUrl;
-        that.houseCardCount = res.data.houseCardCount;
+    that.loginSuccess = function (data) {
+        console.log("loginSuccess data ==> " , data);
+        that.uid = data.uid;
+        that.nickName = data.nickName;
+        that.avatarUrl = data.avatarUrl;
+        that.houseCardCount = data.houseCardCount;
     };
 
     that.joinRoomSuccess = function (config, data) {
@@ -28,7 +28,7 @@ let PlayerData = function () {
         console.log('data = ', JSON.stringify(data));
         console.log('config ' ,config.json.turn_count); 
         let gameConfig = config.json;
-        let roomConfig = data.data.data;
+        let roomConfig = data.data;
         that.roomID = roomConfig.roomId;
         console.log('gameConfig => ' ,gameConfig);
         console.log('roomConfig => ' ,roomConfig);

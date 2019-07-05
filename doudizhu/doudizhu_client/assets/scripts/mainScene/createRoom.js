@@ -34,7 +34,7 @@ cc.Class({
                         console.log("createRoom err => ", err);
                     } else {
                         console.log("createRoom data =>", data);
-                        global.socket.joinRoom(data.data.roomId, function (err, resp) {
+                        global.socket.joinRoom(data.roomId, function (err, resp) {
                             console.log('resp = ' + JSON.stringify(resp));
                             console.log('resources = ' + JSON.stringify(global.utilsData.resourcesManager.resources));
                             global.utilsData.playerData.joinRoomSuccess(global.utilsData.resourcesManager.resources[defines.gameConfig.createRoomConfig],resp)

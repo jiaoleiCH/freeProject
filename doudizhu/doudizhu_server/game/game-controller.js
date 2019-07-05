@@ -19,7 +19,11 @@ exports.joinRoom = function (roomId, player, cb) {
         let room = roomList[i];
         console.log("roomId = ", roomId, "  roomListId " ,room.roomId);
         if(roomId === room.roomId){
-            room.joinPlayer(player,cb);
+            if(room.players.length >= 3){
+                cb ? cb('此房间满员') : null;
+            }else{
+                room.joinPlayer(player,cb);
+            }
             return;
         }
     }

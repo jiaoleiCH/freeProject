@@ -1,12 +1,13 @@
 const roomConfig = require('./../create_room_config.json');
-console.log('房间配置=>' , roomConfig);
 const Seat = function () {
     let that = {};
     //初始化玩家座位号
     that.getIndex = function (playerList) {
         let index = 0;
+        console.log('playerList ' , JSON.stringify(playerList));
         for (let i = 0; i < playerList.length; i++) {
             let player = playerList[i];
+            console.log('player ==> ' ,JSON.stringify(player),player.seatIndex,index);
             if (player.seatIndex === index) {
                 index++;
             }else{
@@ -24,7 +25,7 @@ const Room = function (roomId,data) {
     let _playerList = [];
     let _seatController = Seat();
     
-    console.log("creatRomm ",roomId," Room data=>" , data);
+    console.log("creatRoom ",roomId," Room data=>" , data);
     let _turnCount = roomConfig.turn_count[data.turnCount].turn_count;
     let _needHouseCardCount = roomConfig.turn_count[data.turnCount].need_house_card_count;
     let _normalBomb = roomConfig.special_rule[data.specialRule].normal_bomb;
@@ -39,6 +40,7 @@ const Room = function (roomId,data) {
         }
         _playerList.push(player);
         let index = _seatController.getIndex(_playerList);
+        console.log('seatIndex ==> ',index);
         player.seatIndex = index;
     };
 

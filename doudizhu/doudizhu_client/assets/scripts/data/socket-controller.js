@@ -10,14 +10,15 @@ const SocketController = function () {
         _socket = io(defines.serverUrl);
         _socket.on('notify', function (data) {
             console.log("notify ==> " ,JSON.stringify(data));
+            console.log('callBackMap ==> ' ,_callBackMap);
             let msg = data.msg;
             _event.fire(msg,data.data);
             let callBackIndex = data.callBackIndex;
             let cb = _callBackMap[callBackIndex];
             if(data.data.err){
-                cb(data.data.err);
+                cb ? cb(data.data.err) : null;
             }else {
-                cb(null,data);
+                cb ? cb(null,data.data) : null;
             }
         })
     };
